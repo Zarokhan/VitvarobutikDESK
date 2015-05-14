@@ -1,0 +1,10 @@
+c:\users\robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\bin\Debug\VitvarubutikDESK.exe.config
+c:\users\robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\bin\Debug\VitvarubutikDESK.exe
+c:\users\robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\bin\Debug\VitvarubutikDESK.pdb
+c:\users\robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.csprojResolveAssemblyReference.cache
+c:\users\robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Properties.Resources.resources
+c:\users\robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.csproj.GenerateResource.Cache
+c:\users\robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.exe
+c:\users\robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.pdb
+c:\users\robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Form1.resources
+c:\users\robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\bin\Debug\mysql.data.dll
