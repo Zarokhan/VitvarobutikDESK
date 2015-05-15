@@ -153,7 +153,7 @@
             // KunderButton
             // 
             this.KunderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KunderButton.Location = new System.Drawing.Point(183, 292);
+            this.KunderButton.Location = new System.Drawing.Point(244, 337);
             this.KunderButton.Name = "KunderButton";
             this.KunderButton.Size = new System.Drawing.Size(250, 115);
             this.KunderButton.TabIndex = 12;
@@ -164,7 +164,7 @@
             // LeverantörButton
             // 
             this.LeverantörButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LeverantörButton.Location = new System.Drawing.Point(439, 292);
+            this.LeverantörButton.Location = new System.Drawing.Point(500, 337);
             this.LeverantörButton.Name = "LeverantörButton";
             this.LeverantörButton.Size = new System.Drawing.Size(250, 115);
             this.LeverantörButton.TabIndex = 13;
@@ -175,7 +175,7 @@
             // ProduktButton
             // 
             this.ProduktButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProduktButton.Location = new System.Drawing.Point(183, 413);
+            this.ProduktButton.Location = new System.Drawing.Point(244, 458);
             this.ProduktButton.Name = "ProduktButton";
             this.ProduktButton.Size = new System.Drawing.Size(250, 115);
             this.ProduktButton.TabIndex = 14;
@@ -186,7 +186,7 @@
             // KampanjButton
             // 
             this.KampanjButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KampanjButton.Location = new System.Drawing.Point(439, 413);
+            this.KampanjButton.Location = new System.Drawing.Point(500, 458);
             this.KampanjButton.Name = "KampanjButton";
             this.KampanjButton.Size = new System.Drawing.Size(250, 115);
             this.KampanjButton.TabIndex = 15;

@@ -13,15 +13,18 @@ namespace VitvarubutikDESK.Main.FormTables
 {
     public partial class ProduktForm : FixedForm
     {
-        public ProduktForm()
+        Form1 main;
+
+        public ProduktForm(Form1 main)
         {
+            this.main = main;
             Show();
             InitializeComponent();
         }
 
         private void NewProductButton_Click(object sender, EventArgs e)
         {
-            AddProductForm apf = new AddProductForm();
+            AddProductForm apf = new AddProductForm(main);
         }
     }
 }

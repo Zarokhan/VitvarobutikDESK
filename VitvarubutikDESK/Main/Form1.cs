@@ -23,6 +23,8 @@ namespace VitvarubutikDESK
         private String Username = "Zarokhan";
         private String Password = "Q8PtEYNAt7RxBZ5e";
 
+        private String Query = "";
+
         private ErrorMsgForm ErrorForm;
 
         public Form1()
@@ -33,7 +35,12 @@ namespace VitvarubutikDESK
 
         }
 
-        private void Establish_DB_Connection()
+        public void SetQuery(String query)
+        {
+            this.Query = query;
+        }
+
+        public void Establish_DB_Connection()
         {
             bool Established_Connection = false;
 
@@ -44,7 +51,13 @@ namespace VitvarubutikDESK
                 conn = new MySqlConnection("server=" + Host + ";uid=" + Username + ";pwd=" + Password + ";database=" + Database + ";");
                 conn.Open();
 
-                // 
+                // SQL Query
+                if (Query != "")
+                {
+                    MySqlCommand cmd = new MySqlCommand(Query, conn);
+                    cmd.Prepare();
+                    cmd.ExecuteReader();
+                }
 
             }
             catch (MySqlException e)
@@ -100,7 +113,7 @@ namespace VitvarubutikDESK
 
         private void KunderButton_Click(object sender, EventArgs e)
         {
-            ProduktForm pf = new ProduktForm();
+            ProduktForm pf = new ProduktForm(this);
         }
 
         private void LeverantörButton_Click(object sender, EventArgs e)
