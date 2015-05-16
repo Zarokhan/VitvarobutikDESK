@@ -113,7 +113,7 @@ namespace VitvarubutikDESK
 
         private void KunderButton_Click(object sender, EventArgs e)
         {
-            ProduktForm pf = new ProduktForm(this);
+
         }
 
         private void LeverantörButton_Click(object sender, EventArgs e)
@@ -123,7 +123,7 @@ namespace VitvarubutikDESK
 
         private void ProduktButton_Click(object sender, EventArgs e)
         {
-
+            ProduktForm pf = new ProduktForm(this);
         }
 
         private void KampanjButton_Click(object sender, EventArgs e)
