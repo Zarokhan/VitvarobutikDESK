@@ -14,6 +14,8 @@ namespace VitvarubutikDESK.Main.FormTables
     public partial class AddProductForm : FixedForm
     {
         Form1 main;
+        private bool spara;
+        private int id;
 
         public AddProductForm(Form1 main)
         {
@@ -22,18 +24,52 @@ namespace VitvarubutikDESK.Main.FormTables
             Show();
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
+        public AddProductForm(Form1 main, int id, string typ, string tillverkare, string model, string energi, string beskrivning, int pris, string image, int antal)
         {
-            int pris;
-            if (!int.TryParse(PrisTextBox.Text, out pris))
+            this.main = main;
+            this.id = id;
+            InitializeComponent();
+            Show();
+
+            TypeTextBox.Text = typ;
+            TillverkareTextBox.Text = tillverkare;
+            ModelTextBox.Text = model;
+            EnergiTextBox.Text = energi;
+            BeskrivningTextBox.Text = beskrivning;
+            PrisTextBox.Text = "" + pris;
+            ImageTextBox.Text = image;
+            AntalTextBox.Text = "" + antal;
+
+            AddButton.Text = "Spara";
+            spara = true;
+        }
+
+        protected internal void AddButton_Click(object sender, EventArgs e)
+        {
+            int pris, antal;
+            if (!int.TryParse(PrisTextBox.Text, out pris) && !int.TryParse(AntalTextBox.Text, out antal))
                 return;
 
-            this.main.SetQuery(
-                "INSERT INTO produkt (produkt_typ, tillverkare, model, energiklass, beskrivning, pris, image, antal) " + 
-                "VALUES ('" + this.TypeTextBox.Text + "', '" + this.TillverkareTextBox.Text + "', '" + this.ModelTextBox.Text + "', " +
-                "'" + EnergiTextBox.Text + "', '" + BeskrivningTextBox.Text + "', " + pris + ", '" + this.ImageTextBox.Text + "', " + AntalTextBox.Text + ");");
+            if (!spara)
+            {
+                this.main.SetQuery(
+                    "INSERT INTO produkt (produkt_typ, tillverkare, model, energiklass, beskrivning, pris, image, antal) " + 
+                    "VALUES ('" + this.TypeTextBox.Text + "', '" + this.TillverkareTextBox.Text + "', '" + this.ModelTextBox.Text + "', " +
+                    "'" + EnergiTextBox.Text + "', '" + BeskrivningTextBox.Text + "', " + pris + ", '" + this.ImageTextBox.Text + "', " + AntalTextBox.Text + ");");
             
-            main.Establish_DB_Connection();
+                main.Establish_DB_Connection();
+            }
+            else
+            {
+                this.main.SetQuery(
+                    "UPDATE produkt " +
+                    "SET produkt_typ='" + TypeTextBox.Text + "', tillverkare='" + TillverkareTextBox.Text + "', model='" + ModelTextBox.Text + "', energiklass='" +
+                    EnergiTextBox.Text + "', beskrivning='" + BeskrivningTextBox.Text + "', pris=" + PrisTextBox.Text + ", image='" + ImageTextBox.Text + "', " + 
+                    "antal=" + AntalTextBox.Text + " " +
+                    "WHERE id=" + id + ";");
+
+                main.Establish_DB_Connection();
+            }
             this.Close();
         }
 

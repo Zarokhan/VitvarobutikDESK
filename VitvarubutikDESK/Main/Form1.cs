@@ -40,6 +40,103 @@ namespace VitvarubutikDESK
             this.Query = query;
         }
 
+        public List<String> ListValuesProductID(int id)
+        {
+            MySqlConnection conn = null;
+            List<String> asdasd = new List<String>();
+            try
+            {
+                conn = new MySqlConnection("server=" + Host + ";uid=" + Username + ";pwd=" + Password + ";database=" + Database + ";");
+                conn.Open();
+
+                Query = "SELECT * FROM produkt WHERE id = " + id;
+
+                // SQL Query
+                if (Query != "")
+                {
+                    MySqlCommand cmd = new MySqlCommand(Query, conn);
+                    cmd.Prepare();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        asdasd.Add(reader.GetString(0));
+                        asdasd.Add(reader.GetString(1));
+                        asdasd.Add(reader.GetString(2));
+                        asdasd.Add(reader.GetString(3));
+                        asdasd.Add(reader.GetString(4));
+                        asdasd.Add(reader.GetString(5));
+                        asdasd.Add(reader.GetString(6));
+                        asdasd.Add(reader.GetString(7));
+                        asdasd.Add(reader.GetString(8));
+                    }
+
+                    reader.Close();
+                }
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.Message);
+                status_label.Text = "Disconnected";
+                status_label.ForeColor = Color.Red;
+                ErrorForm = new ErrorMsgForm("A connection was not established.");
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
+            }
+
+            return asdasd;
+        }
+
+        public List<int> ListAllProducts(ListBox listProducts)
+        {
+            MySqlConnection conn = null;
+            List<int> asdasd = new List<int>();
+            try
+            {
+                conn = new MySqlConnection("server=" + Host + ";uid=" + Username + ";pwd=" + Password + ";database=" + Database + ";");
+                conn.Open();
+
+                Query = "SELECT produkt_typ, tillverkare, model, energiklass, id FROM produkt";
+
+                // SQL Query
+                if (Query != "")
+                {
+                    MySqlCommand cmd = new MySqlCommand(Query, conn);
+                    cmd.Prepare();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        //Console.WriteLine(reader.GetString(1));
+                        string line = reader.GetString(0) + " " + reader.GetString(1) + " " + reader.GetString(2) + " " + reader.GetString(3);
+                        asdasd.Add(reader.GetInt32(4));
+                        listProducts.Items.Add(line);
+                    }
+
+                    reader.Close();
+                }
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.Message);
+                status_label.Text = "Disconnected";
+                status_label.ForeColor = Color.Red;
+                ErrorForm = new ErrorMsgForm("A connection was not established.");
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
+            }
+
+            return asdasd;
+        }
+
         public void Establish_DB_Connection()
         {
             bool Established_Connection = false;
