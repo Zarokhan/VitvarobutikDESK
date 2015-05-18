@@ -57,7 +57,7 @@ namespace VitvarubutikDESK.Main.FormTables
                 "WHERE id =" + id + ";");
             main.Establish_DB_Connection();
 
-            ErrorMsgForm msg = new ErrorMsgForm("Produkt bortagen.");
+            MsgForm msg = new MsgForm("Produkt bortagen.");
         }
 
     }

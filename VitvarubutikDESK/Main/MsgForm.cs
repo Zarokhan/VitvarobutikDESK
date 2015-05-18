@@ -11,11 +11,11 @@ using VitvarubutikDESK.Main.Utilities;
 
 namespace VitvarubutikDESK.Main
 {
-    public partial class ErrorMsgForm : FixedForm
+    public partial class MsgForm : FixedForm
     {
         private String ErrorMsg;
 
-        public ErrorMsgForm(String errorMsg)
+        public MsgForm(String errorMsg)
         {
             InitializeComponent();
 

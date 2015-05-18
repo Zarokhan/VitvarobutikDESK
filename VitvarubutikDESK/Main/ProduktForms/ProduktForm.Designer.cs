@@ -82,7 +82,7 @@
             this.Controls.Add(this.NewProductButton);
             this.Controls.Add(this.listProducts);
             this.Name = "ProduktForm";
-            this.Text = "ProduktForm";
+            this.Text = "Produkter";
             this.ResumeLayout(false);
 
         }

@@ -129,7 +129,7 @@
             this.Controls.Add(this.TillverkareTextBox);
             this.Controls.Add(this.TypeTextBox);
             this.Name = "AddProductForm";
-            this.Text = "AddProductForm";
+            this.Text = "Produkt";
             this.ResumeLayout(false);
             this.PerformLayout();
 

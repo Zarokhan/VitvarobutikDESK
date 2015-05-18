@@ -1,6 +1,6 @@
 ﻿namespace VitvarubutikDESK.Main
 {
-    partial class ErrorMsgForm
+    partial class MsgForm
     {
         /// <summary>
         /// Required designer variable.

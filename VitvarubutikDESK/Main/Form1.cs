@@ -25,7 +25,7 @@ namespace VitvarubutikDESK
 
         private String Query = "";
 
-        private ErrorMsgForm ErrorForm;
+        private MsgForm ErrorForm;
 
         public Form1()
         {
@@ -39,6 +39,53 @@ namespace VitvarubutikDESK
         {
             this.Query = query;
         }
+
+        public List<String> ListValuesKundID(int id)
+        {
+            MySqlConnection conn = null;
+            List<String> asdasd = new List<String>();
+            try
+            {
+                conn = new MySqlConnection("server=" + Host + ";uid=" + Username + ";pwd=" + Password + ";database=" + Database + ";");
+                conn.Open();
+
+                Query = "SELECT * FROM kund WHERE KundNr = " + id;
+
+                // SQL Query
+                if (Query != "")
+                {
+                    MySqlCommand cmd = new MySqlCommand(Query, conn);
+                    cmd.Prepare();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        asdasd.Add(reader.GetString(0));
+                        asdasd.Add(reader.GetString(1));
+                        asdasd.Add(reader.GetString(2));
+                        asdasd.Add(reader.GetString(3));
+                        asdasd.Add(reader.GetString(4));
+                    }
+
+                    reader.Close();
+                }
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.Message);
+                status_label.Text = "Disconnected";
+                status_label.ForeColor = Color.Red;
+                ErrorForm = new MsgForm("Did not find kund.");
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
+            }
+
+            return asdasd;
+        } 
 
         public List<String> ListValuesProductID(int id)
         {
@@ -80,7 +127,53 @@ namespace VitvarubutikDESK
                 Console.WriteLine(e.Message);
                 status_label.Text = "Disconnected";
                 status_label.ForeColor = Color.Red;
-                ErrorForm = new ErrorMsgForm("A connection was not established.");
+                ErrorForm = new MsgForm("Did not find produkt.");
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
+            }
+
+            return asdasd;
+        }
+
+        public List<int> ListAllKunder(ListBox listKunder)
+        {
+            MySqlConnection conn = null;
+            List<int> asdasd = new List<int>();
+            try
+            {
+                conn = new MySqlConnection("server=" + Host + ";uid=" + Username + ";pwd=" + Password + ";database=" + Database + ";");
+                conn.Open();
+
+                Query = "SELECT Namn, kundNr, TelNr, Address, Mail FROM kund";
+
+                // SQL Query
+                if (Query != "")
+                {
+                    MySqlCommand cmd = new MySqlCommand(Query, conn);
+                    cmd.Prepare();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        //Console.WriteLine(reader.GetString(1));
+                        string line = "Name: " + reader.GetString(0) + " KundNr: " + reader.GetString(1) + " Telnr: " + reader.GetString(2) + " Address: " + reader.GetString(3) + " Mail: " + reader.GetString(4);
+                        asdasd.Add(reader.GetInt32(1));
+                        listKunder.Items.Add(line);
+                    }
+
+                    reader.Close();
+                }
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.Message);
+                status_label.Text = "Disconnected";
+                status_label.ForeColor = Color.Red;
+                ErrorForm = new MsgForm("Could not list all customers.");
             }
             finally
             {
@@ -126,7 +219,7 @@ namespace VitvarubutikDESK
                 Console.WriteLine(e.Message);
                 status_label.Text = "Disconnected";
                 status_label.ForeColor = Color.Red;
-                ErrorForm = new ErrorMsgForm("A connection was not established.");
+                ErrorForm = new MsgForm("Could not list all products.");
             }
             finally
             {
@@ -163,7 +256,7 @@ namespace VitvarubutikDESK
                 status_label.Text = "Disconnected";
                 status_label.ForeColor = Color.Red;
                 Established_Connection = false;
-                ErrorForm = new ErrorMsgForm("A connection was not established.");
+                ErrorForm = new MsgForm("A connection was not established.");
             }
             finally
             {
@@ -205,12 +298,12 @@ namespace VitvarubutikDESK
         // Open up Connection Settings
         private void ConnectionSettings_MouseClick(object sender, MouseEventArgs e)
         {
-            ConnectionSettings s = new ConnectionSettings(this);
+            new ConnectionSettings(this);
         }
 
         private void KunderButton_Click(object sender, EventArgs e)
         {
-
+            new KundForm(this);
         }
 
         private void LeverantörButton_Click(object sender, EventArgs e)
@@ -220,7 +313,7 @@ namespace VitvarubutikDESK
 
         private void ProduktButton_Click(object sender, EventArgs e)
         {
-            ProduktForm pf = new ProduktForm(this);
+            new ProduktForm(this);
         }
 
         private void KampanjButton_Click(object sender, EventArgs e)
