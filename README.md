@@ -1,6 +1,6 @@
 # VitvarobutikDESK
 
-Administriva Gränssnittet för databas projekt uppgift.
+Administriva Gränssnittet för databas projekt.
 
 Robin Andersson
 
