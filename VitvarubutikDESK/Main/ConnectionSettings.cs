@@ -34,7 +34,12 @@ namespace VitvarubutikDESK.Main
         private void ConnectButton_Click(object sender, EventArgs e)
         {
             Hide();
-            main.SetSQLConnection(HostTextBox.Text, DatabaseTextBox.Text, UsernameTextBox.Text, PasswordTextbox.Text);
+            Form1.Host = HostTextBox.Text;
+            Form1.Database = DatabaseTextBox.Text;
+            Form1.Username = UsernameTextBox.Text;
+            Form1.Password = PasswordTextbox.Text;
+
+            main.CheckConnection();
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

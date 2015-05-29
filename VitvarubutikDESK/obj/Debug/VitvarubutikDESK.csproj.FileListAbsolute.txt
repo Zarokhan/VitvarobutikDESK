@@ -11,6 +11,9 @@ c:\users\robin\documents\visual studio 2013\Projects\VitvarubutikDESK\Vitvarubut
 C:\Users\Robin\Documents\Visual Studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.ConnectionSettings.resources
 C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.FormTables.AddProductForm.resources
 C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.FormTables.ProduktForm.resources
-C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.FormTables.AddKundForm.resources
-C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.FormTables.KundForm.resources
 C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.MsgForm.resources
+C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.ProduktForms.AddSmall.resources
+C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.KundForms.KundForm.resources
+C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.KundForms.SpecifiedKundForm.resources
+C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.LeverantörForms.LeverantörForm.resources
+C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.LeverantörForms.SpecifiedLeverantörForm.resources

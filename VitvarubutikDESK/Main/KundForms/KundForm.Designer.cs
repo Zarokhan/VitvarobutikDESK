@@ -1,4 +1,4 @@
-﻿namespace VitvarubutikDESK.Main.FormTables
+﻿namespace VitvarubutikDESK.Main.KundForms
 {
     partial class KundForm
     {
@@ -28,70 +28,82 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listKunder = new System.Windows.Forms.ListBox();
-            this.NewProductButton = new System.Windows.Forms.Button();
-            this.RedigeraButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
+            this.HistorikButton = new System.Windows.Forms.Button();
+            this.RemoveButton = new System.Windows.Forms.Button();
+            this.EditButton = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
+            this.ListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // listKunder
+            // HistorikButton
             // 
-            this.listKunder.FormattingEnabled = true;
-            this.listKunder.Location = new System.Drawing.Point(12, 12);
-            this.listKunder.Name = "listKunder";
-            this.listKunder.Size = new System.Drawing.Size(727, 147);
-            this.listKunder.TabIndex = 0;
+            this.HistorikButton.Location = new System.Drawing.Point(174, 226);
+            this.HistorikButton.Name = "HistorikButton";
+            this.HistorikButton.Size = new System.Drawing.Size(86, 23);
+            this.HistorikButton.TabIndex = 4;
+            this.HistorikButton.Text = "Köp Historik";
+            this.HistorikButton.UseVisualStyleBackColor = true;
             // 
-            // NewProductButton
+            // RemoveButton
             // 
-            this.NewProductButton.Location = new System.Drawing.Point(12, 165);
-            this.NewProductButton.Name = "NewProductButton";
-            this.NewProductButton.Size = new System.Drawing.Size(86, 23);
-            this.NewProductButton.TabIndex = 1;
-            this.NewProductButton.Text = "Lägg till";
-            this.NewProductButton.UseVisualStyleBackColor = true;
-            this.NewProductButton.Click += new System.EventHandler(this.NewProductButton_Click);
+            this.RemoveButton.Location = new System.Drawing.Point(515, 226);
+            this.RemoveButton.Name = "RemoveButton";
+            this.RemoveButton.Size = new System.Drawing.Size(75, 23);
+            this.RemoveButton.TabIndex = 3;
+            this.RemoveButton.Text = "Ta bort";
+            this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
-            // RedigeraButton
+            // EditButton
             // 
-            this.RedigeraButton.Location = new System.Drawing.Point(104, 165);
-            this.RedigeraButton.Name = "RedigeraButton";
-            this.RedigeraButton.Size = new System.Drawing.Size(75, 23);
-            this.RedigeraButton.TabIndex = 2;
-            this.RedigeraButton.Text = "Redigera";
-            this.RedigeraButton.UseVisualStyleBackColor = true;
-            this.RedigeraButton.Click += new System.EventHandler(this.RedigeraButton_Click);
+            this.EditButton.Location = new System.Drawing.Point(93, 226);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(75, 23);
+            this.EditButton.TabIndex = 2;
+            this.EditButton.Text = "Redigera";
+            this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
-            // DeleteButton
+            // AddButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(185, 165);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteButton.TabIndex = 3;
-            this.DeleteButton.Text = "Ta bort";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            this.AddButton.Location = new System.Drawing.Point(12, 226);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(75, 23);
+            this.AddButton.TabIndex = 1;
+            this.AddButton.Text = "Lägg till";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            // 
+            // ListBox
+            // 
+            this.ListBox.FormattingEnabled = true;
+            this.ListBox.Location = new System.Drawing.Point(12, 12);
+            this.ListBox.Name = "ListBox";
+            this.ListBox.Size = new System.Drawing.Size(578, 186);
+            this.ListBox.TabIndex = 0;
             // 
             // KundForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 194);
-            this.Controls.Add(this.DeleteButton);
-            this.Controls.Add(this.RedigeraButton);
-            this.Controls.Add(this.NewProductButton);
-            this.Controls.Add(this.listKunder);
+            this.ClientSize = new System.Drawing.Size(602, 261);
+            this.Controls.Add(this.HistorikButton);
+            this.Controls.Add(this.RemoveButton);
+            this.Controls.Add(this.EditButton);
+            this.Controls.Add(this.AddButton);
+            this.Controls.Add(this.ListBox);
             this.Name = "KundForm";
-            this.Text = "Kunder";
+            this.Text = "KundForm";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListBox listKunder;
-        private System.Windows.Forms.Button NewProductButton;
-        private System.Windows.Forms.Button RedigeraButton;
-        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.ListBox ListBox;
+        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button EditButton;
+        private System.Windows.Forms.Button RemoveButton;
+        private System.Windows.Forms.Button HistorikButton;
     }
 }

@@ -54,6 +54,30 @@
     <Compile Include="Main\ConnectionSettings.Designer.cs">
       <DependentUpon>ConnectionSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\KundForms\KundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\KundForms\KundForm.Designer.cs">
+      <DependentUpon>KundForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\KundForms\SpecifiedKundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\KundForms\SpecifiedKundForm.Designer.cs">
+      <DependentUpon>SpecifiedKundForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\LeverantörForms\LeverantörForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\LeverantörForms\LeverantörForm.Designer.cs">
+      <DependentUpon>LeverantörForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\LeverantörForms\SpecifiedLeverantörForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\LeverantörForms\SpecifiedLeverantörForm.Designer.cs">
+      <DependentUpon>SpecifiedLeverantörForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\MsgForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,23 +90,17 @@
     <Compile Include="Main\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\KundForms\AddKundForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main\KundForms\AddKundForm.Designer.cs">
-      <DependentUpon>AddKundForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Main\KundForms\KundForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main\KundForms\KundForm.Designer.cs">
-      <DependentUpon>KundForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Main\ProduktForms\AddProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main\ProduktForms\AddProductForm.Designer.cs">
       <DependentUpon>AddProductForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\ProduktForms\AddSmall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\ProduktForms\AddSmall.Designer.cs">
+      <DependentUpon>AddSmall.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\ProduktForms\ProduktForm.cs">
       <SubType>Form</SubType>
@@ -98,20 +116,29 @@
     <EmbeddedResource Include="Main\ConnectionSettings.resx">
       <DependentUpon>ConnectionSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main\KundForms\KundForm.resx">
+      <DependentUpon>KundForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\KundForms\SpecifiedKundForm.resx">
+      <DependentUpon>SpecifiedKundForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\LeverantörForms\LeverantörForm.resx">
+      <DependentUpon>LeverantörForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\LeverantörForms\SpecifiedLeverantörForm.resx">
+      <DependentUpon>SpecifiedLeverantörForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main\MsgForm.resx">
       <DependentUpon>MsgForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\KundForms\AddKundForm.resx">
-      <DependentUpon>AddKundForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\KundForms\KundForm.resx">
-      <DependentUpon>KundForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Main\ProduktForms\AddProductForm.resx">
       <DependentUpon>AddProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\ProduktForms\AddSmall.resx">
+      <DependentUpon>AddSmall.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\ProduktForms\ProduktForm.resx">
       <DependentUpon>ProduktForm.cs</DependentUpon>

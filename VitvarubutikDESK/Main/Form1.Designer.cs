@@ -134,7 +134,7 @@
             // ipaddress_label
             // 
             this.ipaddress_label.AutoSize = true;
-            this.ipaddress_label.Location = new System.Drawing.Point(135, 9);
+            this.ipaddress_label.Location = new System.Drawing.Point(106, 9);
             this.ipaddress_label.Name = "ipaddress_label";
             this.ipaddress_label.Size = new System.Drawing.Size(40, 13);
             this.ipaddress_label.TabIndex = 2;
@@ -144,7 +144,7 @@
             // 
             this.IPtext_label.AutoSize = true;
             this.IPtext_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IPtext_label.Location = new System.Drawing.Point(109, 9);
+            this.IPtext_label.Location = new System.Drawing.Point(77, 9);
             this.IPtext_label.Name = "IPtext_label";
             this.IPtext_label.Size = new System.Drawing.Size(23, 13);
             this.IPtext_label.TabIndex = 1;

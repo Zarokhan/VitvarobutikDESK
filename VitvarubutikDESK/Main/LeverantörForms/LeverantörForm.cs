@@ -10,38 +10,42 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VitvarubutikDESK.Main.Utilities;
 
-namespace VitvarubutikDESK.Main.KundForms
+namespace VitvarubutikDESK.Main.LeverantörForms
 {
-    public partial class KundForm : FixedForm
+    public partial class LeverantörForm : FixedForm
     {
-        private List<int> kundnr;
+        List<int> indexes;
 
-        public KundForm()
+        public LeverantörForm()
         {
             InitializeComponent();
-            kundnr = new List<int>();
+            indexes = new List<int>();
             RefreshList();
             this.Show();
         }
 
         public void RefreshList()
         {
-            kundnr.Clear();
+            indexes.Clear();
             ListBox.Items.Clear();
 
-            MySqlDataReader reader = Form1.RunQuery("SELECT * FROM Kund");
+            MySqlDataReader reader = Form1.RunQuery("SELECT * FROM Leverantör");
+
             while (reader.Read())
             {
-                kundnr.Add(reader.GetInt32(0));
-                ListBox.Items.Add("Namn: " + reader.GetString(1) + " Tel: " + reader.GetString(2) + " Address: " + reader.GetString(3) + " Mail: " + reader.GetString(4));
+                indexes.Add(reader.GetInt32(0));
+                ListBox.Items.Add("Namn: " + reader.GetString(1) + " Address: " + reader.GetString(3) + " Telefon: " + reader.GetString(2));
             }
-            Form1.CloseConnection(reader);
 
+            Form1.CloseConnection(reader);
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            new SpecifiedKundForm(this);
+            if (ListBox.SelectedIndex < 0)
+                return;
+
+            new SpecifiedLeverantörForm(this);
         }
 
         private void EditButton_Click(object sender, EventArgs e)
@@ -49,9 +53,9 @@ namespace VitvarubutikDESK.Main.KundForms
             if (ListBox.SelectedIndex < 0)
                 return;
 
-            MySqlDataReader reader = Form1.RunQuery("SELECT * FROM Kund WHERE Kundnr=" + kundnr[ListBox.SelectedIndex]);
+            MySqlDataReader reader = Form1.RunQuery("SELECT * FROM Leverantör WHERE id=" + indexes[ListBox.SelectedIndex]);
             reader.Read();
-            new SpecifiedKundForm(this, reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4));
+            new SpecifiedLeverantörForm(this, reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3));
             Form1.CloseConnection(reader);
         }
 
@@ -60,10 +64,9 @@ namespace VitvarubutikDESK.Main.KundForms
             if (ListBox.SelectedIndex < 0)
                 return;
 
-            MySqlDataReader reader = Form1.RunQuery("DELETE FROM Kund WHERE Kundnr=" + kundnr[ListBox.SelectedIndex]);
+            MySqlDataReader reader = Form1.RunQuery("DELETE FROM Leverantör WHERE id=" + indexes[ListBox.SelectedIndex]);
             Form1.CloseConnection(reader);
-
-            RefreshList();
+            this.RefreshList();
         }
     }
 }

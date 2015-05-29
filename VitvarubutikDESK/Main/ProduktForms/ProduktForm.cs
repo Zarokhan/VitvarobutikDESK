@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,22 +14,40 @@ namespace VitvarubutikDESK.Main.FormTables
 {
     public partial class ProduktForm : FixedForm
     {
-        Form1 main;
-
         private List<int> indexes;
 
-        public ProduktForm(Form1 main)
+        public ProduktForm()
         {
-            this.main = main;
             Show();
             InitializeComponent();
+            indexes = new List<int>();
+            RefreshList();
+        }
 
-            indexes = main.ListAllProducts(listProducts);
+        public void RefreshList()
+        {
+            indexes.Clear();
+            listProducts.Items.Clear();
+
+            MySqlDataReader reader = Form1.RunQuery("SELECT Produkt.id, ProduktTyp.Typ, Tillverkare.Tillverkare, Produkt.Modell, Produkt.Energiklass, Produkt.Beskrivning, Produkt.Bild, Produkt.Pris, Produkt.Antal " +
+                "FROM Produkt "+
+                    "JOIN ProduktTyp "+
+                        "ON Produkt.P_Typ=ProduktTyp.id "+
+                    "JOIN Tillverkare "+
+                        "ON Produkt.Tillverkare=Tillverkare.id");
+
+            while (reader.Read())
+            {
+                indexes.Add(reader.GetInt32(0));
+                listProducts.Items.Add(reader.GetString(1) + " " + reader.GetString(2) + " " + reader.GetString(3) + " " + reader.GetString(4) + " Pris: " + reader.GetString(7) + " kr Antal: " + reader.GetString(8));
+            }
+
+            Form1.CloseConnection(reader);
         }
 
         private void NewProductButton_Click(object sender, EventArgs e)
         {
-            AddProductForm apf = new AddProductForm(main);
+            new AddProductForm(this);
         }
 
         private void RedigeraButton_Click(object sender, EventArgs e)
@@ -37,14 +56,17 @@ namespace VitvarubutikDESK.Main.FormTables
                 return;
 
             int id = indexes[listProducts.SelectedIndex];
-            List<String> data = main.ListValuesProductID(id);
+            List<string> data = new List<string>();
 
-            for (int i = 0; i < data.Count; i++ )
+            MySqlDataReader reader = Form1.RunQuery("SELECT * FROM Produkt WHERE id=" + id);
+            reader.Read();
+            for (int i = 0; i < 9; i++)
             {
-                Console.WriteLine(data[i]);
+                data.Add(reader.GetString(i));
             }
+            Form1.CloseConnection(reader);
 
-            AddProductForm apf = new AddProductForm(main, int.Parse(data[0]), data[1], data[2], data[3], data[4], data[5], int.Parse(data[6]), data[7], int.Parse(data[8]));
+            new AddProductForm(this, int.Parse(data[0]), int.Parse(data[1]), int.Parse(data[2]), data[3], data[4], data[5], int.Parse(data[6]), int.Parse(data[7]), data[8]);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -52,12 +74,11 @@ namespace VitvarubutikDESK.Main.FormTables
             if (listProducts.SelectedIndex == -1)
                 return;
 
-            int id = indexes[listProducts.SelectedIndex];
-            main.SetQuery("DELETE FROM produkt " +
-                "WHERE id =" + id + ";");
-            main.Establish_DB_Connection();
+            MySqlDataReader reader = Form1.RunQuery("DELETE FROM Produkt WHERE id=" + indexes[listProducts.SelectedIndex]);
+            Form1.CloseConnection(reader);
 
-            MsgForm msg = new MsgForm("Produkt bortagen.");
+            MsgForm msg = new MsgForm("Produkt borttagen.");
+            RefreshList();
         }
 
     }

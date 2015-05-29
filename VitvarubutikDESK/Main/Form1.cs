@@ -12,267 +12,95 @@ using VitvarubutikDESK.Main;
 using VitvarubutikDESK.Main.Utilities;
 using System.Threading;
 using VitvarubutikDESK.Main.FormTables;
+using VitvarubutikDESK.Main.KundForms;
+using VitvarubutikDESK.Main.LeverantörForms;
 
 namespace VitvarubutikDESK
 {
     public partial class Form1 : FixedForm
     {
         // Database connection properties
-        private String Host = "localhost";
-        private String Database = "vitvarubutik";
-        private String Username = "Zarokhan";
-        private String Password = "Q8PtEYNAt7RxBZ5e";
+        public static string Host { get; set; }
+        public static string Database { get; set; }
+        public static string Username { get; set; }
+        public static string Password { get; set; }
+        public static MySqlConnection connection;
 
-        private String Query = "";
-
+        // Error Message
         private MsgForm ErrorForm;
 
+        // Main program
         public Form1()
         {
             InitializeComponent();
+            DefaultSettings();
+            Update_Label_Texts();
 
-            Establish_DB_Connection();
-
+            CheckConnection();
         }
 
-        public void SetQuery(String query)
+        public void CheckConnection()
         {
-            this.Query = query;
-        }
-
-        public List<String> ListValuesKundID(int id)
-        {
-            MySqlConnection conn = null;
-            List<String> asdasd = new List<String>();
-            try
+            MySqlDataReader reader = RunQuery("Show tables");
+            if (reader == null)
             {
-                conn = new MySqlConnection("server=" + Host + ";uid=" + Username + ";pwd=" + Password + ";database=" + Database + ";");
-                conn.Open();
-
-                Query = "SELECT * FROM kund WHERE KundNr = " + id;
-
-                // SQL Query
-                if (Query != "")
-                {
-                    MySqlCommand cmd = new MySqlCommand(Query, conn);
-                    cmd.Prepare();
-                    MySqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        asdasd.Add(reader.GetString(0));
-                        asdasd.Add(reader.GetString(1));
-                        asdasd.Add(reader.GetString(2));
-                        asdasd.Add(reader.GetString(3));
-                        asdasd.Add(reader.GetString(4));
-                    }
-
-                    reader.Close();
-                }
-
-            }
-            catch (MySqlException e)
-            {
-                Console.WriteLine(e.Message);
                 status_label.Text = "Disconnected";
                 status_label.ForeColor = Color.Red;
-                ErrorForm = new MsgForm("Did not find kund.");
             }
-            finally
-            {
-                if (conn != null)
-                    conn.Close();
-            }
-
-            return asdasd;
-        } 
-
-        public List<String> ListValuesProductID(int id)
-        {
-            MySqlConnection conn = null;
-            List<String> asdasd = new List<String>();
-            try
-            {
-                conn = new MySqlConnection("server=" + Host + ";uid=" + Username + ";pwd=" + Password + ";database=" + Database + ";");
-                conn.Open();
-
-                Query = "SELECT * FROM produkt WHERE id = " + id;
-
-                // SQL Query
-                if (Query != "")
-                {
-                    MySqlCommand cmd = new MySqlCommand(Query, conn);
-                    cmd.Prepare();
-                    MySqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        asdasd.Add(reader.GetString(0));
-                        asdasd.Add(reader.GetString(1));
-                        asdasd.Add(reader.GetString(2));
-                        asdasd.Add(reader.GetString(3));
-                        asdasd.Add(reader.GetString(4));
-                        asdasd.Add(reader.GetString(5));
-                        asdasd.Add(reader.GetString(6));
-                        asdasd.Add(reader.GetString(7));
-                        asdasd.Add(reader.GetString(8));
-                    }
-
-                    reader.Close();
-                }
-
-            }
-            catch (MySqlException e)
-            {
-                Console.WriteLine(e.Message);
-                status_label.Text = "Disconnected";
-                status_label.ForeColor = Color.Red;
-                ErrorForm = new MsgForm("Did not find produkt.");
-            }
-            finally
-            {
-                if (conn != null)
-                    conn.Close();
-            }
-
-            return asdasd;
-        }
-
-        public List<int> ListAllKunder(ListBox listKunder)
-        {
-            MySqlConnection conn = null;
-            List<int> asdasd = new List<int>();
-            try
-            {
-                conn = new MySqlConnection("server=" + Host + ";uid=" + Username + ";pwd=" + Password + ";database=" + Database + ";");
-                conn.Open();
-
-                Query = "SELECT Namn, kundNr, TelNr, Address, Mail FROM kund";
-
-                // SQL Query
-                if (Query != "")
-                {
-                    MySqlCommand cmd = new MySqlCommand(Query, conn);
-                    cmd.Prepare();
-                    MySqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        //Console.WriteLine(reader.GetString(1));
-                        string line = "Name: " + reader.GetString(0) + " KundNr: " + reader.GetString(1) + " Telnr: " + reader.GetString(2) + " Address: " + reader.GetString(3) + " Mail: " + reader.GetString(4);
-                        asdasd.Add(reader.GetInt32(1));
-                        listKunder.Items.Add(line);
-                    }
-
-                    reader.Close();
-                }
-
-            }
-            catch (MySqlException e)
-            {
-                Console.WriteLine(e.Message);
-                status_label.Text = "Disconnected";
-                status_label.ForeColor = Color.Red;
-                ErrorForm = new MsgForm("Could not list all customers.");
-            }
-            finally
-            {
-                if (conn != null)
-                    conn.Close();
-            }
-
-            return asdasd;
-        }
-
-        public List<int> ListAllProducts(ListBox listProducts)
-        {
-            MySqlConnection conn = null;
-            List<int> asdasd = new List<int>();
-            try
-            {
-                conn = new MySqlConnection("server=" + Host + ";uid=" + Username + ";pwd=" + Password + ";database=" + Database + ";");
-                conn.Open();
-
-                Query = "SELECT produkt_typ, tillverkare, model, energiklass, id FROM produkt";
-
-                // SQL Query
-                if (Query != "")
-                {
-                    MySqlCommand cmd = new MySqlCommand(Query, conn);
-                    cmd.Prepare();
-                    MySqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        //Console.WriteLine(reader.GetString(1));
-                        string line = reader.GetString(0) + " " + reader.GetString(1) + " " + reader.GetString(2) + " " + reader.GetString(3);
-                        asdasd.Add(reader.GetInt32(4));
-                        listProducts.Items.Add(line);
-                    }
-
-                    reader.Close();
-                }
-
-            }
-            catch (MySqlException e)
-            {
-                Console.WriteLine(e.Message);
-                status_label.Text = "Disconnected";
-                status_label.ForeColor = Color.Red;
-                ErrorForm = new MsgForm("Could not list all products.");
-            }
-            finally
-            {
-                if (conn != null)
-                    conn.Close();
-            }
-
-            return asdasd;
-        }
-
-        public void Establish_DB_Connection()
-        {
-            bool Established_Connection = false;
-
-            MySqlConnection conn = null;
-            try
-            {
-                Established_Connection = true;
-                conn = new MySqlConnection("server=" + Host + ";uid=" + Username + ";pwd=" + Password + ";database=" + Database + ";");
-                conn.Open();
-
-                // SQL Query
-                if (Query != "")
-                {
-                    MySqlCommand cmd = new MySqlCommand(Query, conn);
-                    cmd.Prepare();
-                    cmd.ExecuteReader();
-                }
-
-            }
-            catch (MySqlException e)
-            {
-                Console.WriteLine(e.Message);
-                status_label.Text = "Disconnected";
-                status_label.ForeColor = Color.Red;
-                Established_Connection = false;
-                ErrorForm = new MsgForm("A connection was not established.");
-            }
-            finally
-            {
-                if (conn != null)
-                    conn.Close();
-            }
-
-            if (Established_Connection)
+            else
             {
                 status_label.Text = "Connected";
                 status_label.ForeColor = Color.Green;
-                Update_Label_Texts();
             }
-            Console.Read();
+            CloseConnection(reader);
+            Update_Label_Texts();
         }
 
+        public static MySqlDataReader RunQuery(string query)
+        {
+            connection = null;
+            MySqlDataReader reader = null;
+
+            try
+            {
+                // Connection
+                connection = new MySqlConnection("server=" + Host + ";uid=" + Username + ";pwd=" + Password + ";database=" + Database + ";");
+                connection.Open();
+
+                // Query
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Prepare();
+                reader = cmd.ExecuteReader();
+
+            } catch (MySqlException e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+
+            Console.Read();
+
+            return reader;
+        }
+
+        public static void CloseConnection(MySqlDataReader reader)
+        {
+            if (reader != null)
+                reader.Close();
+            if (connection != null)
+                connection.Close();
+        }
+
+        // Default database login info
+        public void DefaultSettings()
+        {
+            Host = "195.178.235.60";
+            Database = "ae5929";
+            Username = "ae5929";
+            Password = "Applikationer1";
+        }
+
+        // Update db/connection labels
         public void Update_Label_Texts()
         {
             ipaddress_label.Text = Host;
@@ -282,40 +110,31 @@ namespace VitvarubutikDESK
 
         }
 
-        // Sets new vaules for a sql connection
-        public void SetSQLConnection(String host, String DB, String user, String pass)
-        {
-            this.Host = host;
-            this.Database = DB;
-            this.Username = user;
-            this.Password = pass;
-
-            Establish_DB_Connection();
-            Update_Label_Texts();
-        }
-
-
         // Open up Connection Settings
         private void ConnectionSettings_MouseClick(object sender, MouseEventArgs e)
         {
             new ConnectionSettings(this);
         }
 
+        // Kund btn
         private void KunderButton_Click(object sender, EventArgs e)
         {
-            new KundForm(this);
+            new KundForm();
         }
 
+        // Leverantör btn
         private void LeverantörButton_Click(object sender, EventArgs e)
         {
-
+            new LeverantörForm();
         }
 
+        // Produkt btn
         private void ProduktButton_Click(object sender, EventArgs e)
         {
-            new ProduktForm(this);
+            new ProduktForm();
         }
 
+        // Kampan btn
         private void KampanjButton_Click(object sender, EventArgs e)
         {
 
