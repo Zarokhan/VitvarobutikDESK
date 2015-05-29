@@ -17,3 +17,5 @@ C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\Vitvarubut
 C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.KundForms.SpecifiedKundForm.resources
 C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.LeverantörForms.LeverantörForm.resources
 C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.LeverantörForms.SpecifiedLeverantörForm.resources
+C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.KampanjForms.KampanjForm.resources
+C:\Users\Robin\documents\visual studio 2013\Projects\VitvarubutikDESK\VitvarubutikDESK\obj\Debug\VitvarubutikDESK.Main.KampanjForms.AddKampanjForm.resources

@@ -54,6 +54,18 @@
     <Compile Include="Main\ConnectionSettings.Designer.cs">
       <DependentUpon>ConnectionSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\KampanjForms\AddKampanjForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\KampanjForms\AddKampanjForm.Designer.cs">
+      <DependentUpon>AddKampanjForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\KampanjForms\KampanjForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\KampanjForms\KampanjForm.Designer.cs">
+      <DependentUpon>KampanjForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\KundForms\KundForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +127,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Main\ConnectionSettings.resx">
       <DependentUpon>ConnectionSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\KampanjForms\AddKampanjForm.resx">
+      <DependentUpon>AddKampanjForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\KampanjForms\KampanjForm.resx">
+      <DependentUpon>KampanjForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\KundForms\KundForm.resx">
       <DependentUpon>KundForm.cs</DependentUpon>

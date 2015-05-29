@@ -14,6 +14,7 @@ using System.Threading;
 using VitvarubutikDESK.Main.FormTables;
 using VitvarubutikDESK.Main.KundForms;
 using VitvarubutikDESK.Main.LeverantörForms;
+using VitvarubutikDESK.Main.KampanjForms;
 
 namespace VitvarubutikDESK
 {
@@ -137,7 +138,7 @@ namespace VitvarubutikDESK
         // Kampan btn
         private void KampanjButton_Click(object sender, EventArgs e)
         {
-
+            new KampanjForm();
         }
     }
 }
