@@ -20,14 +20,14 @@ namespace VitvarubutikDESK.Main
             this.main = main;
             InitializeComponent();
 
-            this.Show();
+            ShowDialog();
         }
 
         private void ConnectionSettings_Load(object sender, EventArgs e)
         {
-            HostTextBox.Text = "127.0.0.1";
-            DatabaseTextBox.Text = "vitvarubutik";
-            UsernameTextBox.Text = "root";
+            HostTextBox.Text = "195.178.235.60";
+            DatabaseTextBox.Text = "ae5929";
+            UsernameTextBox.Text = "ae5929";
             PasswordTextbox.Text = "";
         }
 

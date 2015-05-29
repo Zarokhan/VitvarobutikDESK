@@ -37,7 +37,8 @@ namespace VitvarubutikDESK
             DefaultSettings();
             Update_Label_Texts();
 
-            CheckConnection();
+            new ConnectionSettings(this);
+            //CheckConnection();
         }
 
         public void CheckConnection()
@@ -98,7 +99,7 @@ namespace VitvarubutikDESK
             Host = "195.178.235.60";
             Database = "ae5929";
             Username = "ae5929";
-            Password = "Applikationer1";
+            Password = "";
         }
 
         // Update db/connection labels
