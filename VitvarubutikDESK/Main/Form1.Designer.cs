@@ -238,6 +238,7 @@
         private System.Windows.Forms.Button LeverantörButton;
         private System.Windows.Forms.Button ProduktButton;
         private System.Windows.Forms.Button KampanjButton;
+        private System.Windows.Forms.Button button1;
     }
 }
 

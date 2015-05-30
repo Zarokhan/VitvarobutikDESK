@@ -141,5 +141,36 @@ namespace VitvarubutikDESK
         {
             new KampanjForm();
         }
+
+        /*
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+
+            List<int> lid = new List<int>();
+            List<int> pid = new List<int>();
+            List<int> pris = new List<int>();
+
+            MySqlDataReader r = Form1.RunQuery("SELECT id FROM Leverantör");
+            while (r.Read())
+            {
+                lid.Add(r.GetInt32(0));
+            }
+            Form1.CloseConnection(r);
+
+            MySqlDataReader reader = Form1.RunQuery("SELECT id, Pris FROM Produkt");
+            while (reader.Read())
+            {
+                pid.Add(reader.GetInt32(0));
+                pris.Add((int)(reader.GetInt32(1) * 0.75f));
+            }
+            Form1.CloseConnection(reader);
+
+            for (int i = 0; i < pid.Count; i++)
+            {
+                MySqlDataReader d = Form1.RunQuery("INSERT INTO LeverantörProdukter VALUES (" + lid[rnd.Next(lid.Count)] + ", " + pid[i] + ", " + pris[i] + ")");
+                Form1.CloseConnection(d);
+            }
+        }*/
     }
 }

@@ -42,9 +42,6 @@ namespace VitvarubutikDESK.Main.LeverantörForms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            if (ListBox.SelectedIndex < 0)
-                return;
-
             new SpecifiedLeverantörForm(this);
         }
 
